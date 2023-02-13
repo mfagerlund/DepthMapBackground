@@ -1,19 +1,21 @@
-﻿using System.Diagnostics;
+﻿using Runtime;
 using UnityEditor;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-[CustomEditor(typeof(DepthMapBackground))]
-public class DepthMapBackgroundEditor : Editor
+namespace Editor
 {
-    private DepthMapBackground DepthMapBackground => (DepthMapBackground)target;
-    
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(DepthMapBackground))]
+    public class DepthMapBackgroundEditor : UnityEditor.Editor
     {
-        base.OnInspectorGUI();
-        if (GUILayout.Button("Generate Mesh"))
+        private DepthMapBackground DepthMapBackground => (DepthMapBackground)target;
+    
+        public override void OnInspectorGUI()
         {
-            DepthMapBackground.GenerateMesh();
+            base.OnInspectorGUI();
+            if (GUILayout.Button("Generate Mesh"))
+            {
+                DepthMapBackground.GenerateMesh();
+            }
         }
     }
 }
